@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="onlineTest@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="onlinetest">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="att"/>
+    <schema id="4" parent="1" name="attendence"/>
+    <schema id="5" parent="1" name="demo"/>
+    <schema id="6" parent="1" name="information_schema"/>
+    <schema id="7" parent="1" name="jspmvc"/>
+    <schema id="8" parent="1" name="mylib"/>
+    <schema id="9" parent="1" name="mysql"/>
+    <schema id="10" parent="1" name="performance_schema"/>
+    <schema id="11" parent="1" name="shopping"/>
+    <schema id="12" parent="1" name="student"/>
+    <schema id="13" parent="1" name="sys"/>
+    <schema id="14" parent="1" name="user"/>
+    <table id="15" parent="2" name="admininfo"/>
+    <table id="16" parent="2" name="options"/>
+    <table id="17" parent="2" name="questions"/>
+    <table id="18" parent="2" name="selection"/>
+    <table id="19" parent="2" name="sort"/>
+    <table id="20" parent="2" name="test"/>
+    <table id="21" parent="2" name="test_question"/>
+    <table id="22" parent="2" name="test_result"/>
+    <table id="23" parent="2" name="userinfo"/>
+    <column id="24" parent="15" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="15" name="password">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="15" name="name">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="27" parent="15" name="sex">
+      <Position>4</Position>
+      <DataType>char(2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;男&apos;</DefaultExpression>
+    </column>
+    <column id="28" parent="15" name="phone">
+      <Position>5</Position>
+      <DataType>char(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="29" parent="15" name="email">
+      <Position>6</Position>
+      <DataType>varchar(25)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="15" name="remark">
+      <Position>7</Position>
+      <DataType>varchar(140)|0</DataType>
+    </column>
+    <key id="31" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="32" parent="16" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="16" name="item">
+      <Position>2</Position>
+      <DataType>char(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="16" name="content">
+      <Position>3</Position>
+      <DataType>varchar(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="16" name="q_id">
+      <Position>4</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="36" parent="16" name="FK_options_questions">
+      <ColNames>q_id</ColNames>
+    </index>
+    <key id="37" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="38" parent="16" name="FK_options_questions">
+      <ColNames>q_id</ColNames>
+      <RefSchemaName>onlinetest</RefSchemaName>
+      <RefTableName>questions</RefTableName>
+      <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="39" parent="17" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="40" parent="17" name="s_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="41" parent="17" name="stem">
+      <Position>3</Position>
+      <DataType>varchar(300)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="17" name="answer">
+      <Position>4</Position>
+      <DataType>varchar(6)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="17" name="selection">
+      <Position>5</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="44" parent="17" name="FK_question_sort">
+      <ColNames>s_id</ColNames>
+    </index>
+    <index id="45" parent="17" name="FK_Reference_8">
+      <ColNames>selection</ColNames>
+    </index>
+    <key id="46" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="47" parent="17" name="FK_question_sort">
+      <ColNames>s_id</ColNames>
+      <RefSchemaName>onlinetest</RefSchemaName>
+      <RefTableName>sort</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="48" parent="17" name="FK_Reference_8">
+      <ColNames>selection</ColNames>
+      <RefSchemaName>onlinetest</RefSchemaName>
+      <RefTableName>selection</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="49" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="50" parent="18" name="name">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="51" parent="18" name="introduction">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <index id="52" parent="18" name="AK_name">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="53" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="54" parent="18" name="AK_name">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>AK_name</UnderlyingIndexName>
+    </key>
+    <column id="55" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="19" name="name">
+      <Position>2</Position>
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="19" name="introduction">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <index id="58" parent="19" name="AK_Key_2">
+      <ColNames>name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="59" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="60" parent="19" name="AK_Key_2">
+      <ColNames>name</ColNames>
+      <UnderlyingIndexName>AK_Key_2</UnderlyingIndexName>
+    </key>
+    <column id="61" parent="20" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="62" parent="20" name="name">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="20" name="startTime">
+      <Position>3</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="64" parent="20" name="endTime">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+    </column>
+    <column id="65" parent="20" name="time">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;100&apos;</DefaultExpression>
+    </column>
+    <column id="66" parent="20" name="s_id">
+      <Position>6</Position>
+      <DataType>bigint(20)|0</DataType>
+    </column>
+    <index id="67" parent="20" name="sort">
+      <ColNames>s_id</ColNames>
+    </index>
+    <key id="68" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="69" parent="20" name="sort">
+      <ColNames>s_id</ColNames>
+      <RefSchemaName>onlinetest</RefSchemaName>
+      <RefTableName>sort</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="70" parent="21" name="t_id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="21" name="q_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="72" parent="21" name="total">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="73" parent="21" name="wrong">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="74" parent="21" name="FK_test_question_questions">
+      <ColNames>q_id</ColNames>
+    </index>
+    <key id="75" parent="21" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>t_id
+q_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="76" parent="21" name="FK_test_question_test">
+      <ColNames>t_id</ColNames>
+      <RefSchemaName>onlinetest</RefSchemaName>
+      <RefTableName>test</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="77" parent="21" name="FK_test_question_questions">
+      <ColNames>q_id</ColNames>
+      <RefSchemaName>onlinetest</RefSchemaName>
+      <RefTableName>questions</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="78" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="79" parent="22" name="t_id">
+      <Position>2</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="80" parent="22" name="u_id">
+      <Position>3</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="81" parent="22" name="mark">
+      <Position>4</Position>
+      <DataType>decimal(5,2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0.00&apos;</DefaultExpression>
+    </column>
+    <index id="82" parent="22" name="FK_test_result_test">
+      <ColNames>t_id</ColNames>
+    </index>
+    <index id="83" parent="22" name="FK_test_result_userinfo">
+      <ColNames>u_id</ColNames>
+    </index>
+    <key id="84" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="85" parent="22" name="FK_test_result_test">
+      <ColNames>t_id</ColNames>
+      <RefSchemaName>onlinetest</RefSchemaName>
+      <RefTableName>test</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="86" parent="22" name="FK_test_result_userinfo">
+      <ColNames>u_id</ColNames>
+      <RefSchemaName>onlinetest</RefSchemaName>
+      <RefTableName>userinfo</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="87" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="88" parent="23" name="password">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="89" parent="23" name="name">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="90" parent="23" name="sex">
+      <Position>4</Position>
+      <DataType>char(2)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;男&apos;</DefaultExpression>
+    </column>
+    <column id="91" parent="23" name="phone">
+      <Position>5</Position>
+      <DataType>char(11)|0</DataType>
+    </column>
+    <column id="92" parent="23" name="qq">
+      <Position>6</Position>
+      <DataType>varchar(12)|0</DataType>
+    </column>
+    <column id="93" parent="23" name="email">
+      <Position>7</Position>
+      <DataType>varchar(25)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="94" parent="23" name="remark">
+      <Position>8</Position>
+      <DataType>varchar(140)|0</DataType>
+    </column>
+    <key id="95" parent="23" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
