@@ -60,6 +60,7 @@
             return true;
         }
         function refresh() {
+            //IE存在缓存,需要new Date()实现更换路径的作用
             document.getElementById("image").src="/images/randomCodeImage.jsp?"+new Date().getTime();
         }
     </script>
